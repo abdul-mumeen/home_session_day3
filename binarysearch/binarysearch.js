@@ -30,7 +30,7 @@ Array.prototype.toOneThousand = function()
 
 var midTerm = function(first, last)
 {
-	return Math.floor((first + last)/2);
+	return first + Math.floor((last - first)/2);
 };
 
 Array.prototype.search = function(num)
@@ -45,30 +45,44 @@ Array.prototype.search = function(num)
 	var first = 0;
 	var last = this.length - 1;
 	var middle = midTerm(first,last);
-	if (num === this[first])
-	{
-		middle = first;
-	}
-	else if (num === this[last])
-	{
-		middle = last;
-	}
-	else
-	{
+	
 		while(this[middle] != num && first < last)
 		{
-			result.count++;
-	        if (num < this[middle])
-	        {
-	            last = middle - 1;
-	        } 
-	        else
-	        {
-	            first = middle + 1;
-	        }
-	        middle = midTerm(first,last);
+			
+			if (num === this[first])
+			{
+				middle = first;
+			}
+			else if (num === this[last])
+			{
+				middle = last;
+			}
+			else
+			{
+
+				if (num === this[middle - 1])
+				{
+					middle = middle - 1;
+				}
+				else if (num === this[middle + 1])
+				{
+					middle === middle + 1;
+				}
+				else
+				{
+					result.count++;
+			        if (num < this[middle - 1])
+			        {
+			            last = middle - 2;
+			        } 
+			        else
+			        {
+			            first = middle + 2;
+			        }
+			        middle = midTerm(first,last);
+		        }
+		    }   
 	    }
-	}
 	
    	result.index = (this[middle] === num) ? middle : -1;
    	return result;

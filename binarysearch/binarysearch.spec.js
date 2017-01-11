@@ -1,6 +1,6 @@
 'use strict';
 var chai = require('jasmine');
-var myA = require('../binarysearch/binarysearch.js');
+var App = require('../binarysearch/binarysearch.js');
 
 describe('Binary Search to traverse an ordered list, effectively', function() {
   describe('Populate the arrays with valid content', function() {

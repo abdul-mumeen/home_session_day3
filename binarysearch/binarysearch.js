@@ -1,47 +1,50 @@
 'use strict';
 
+
 Array.prototype.toTwenty = function()
 {
 	for(var i = 0; i < 20; i++)
 	{
 		this[i] = i + 1;
 	}
-}
+	return this;
+};
 
 Array.prototype.toForty = function()
 {
-	for(var i = 0; i < 40; i = i + 2)
+	for(var i = 0; i < 20; i++)
 	{
-		this[i] = i + 2;
+		this[i] = (2 * i) + 2;
 	}
-}
+	return this;
+};
 
 Array.prototype.toOneThousand = function()
 {
-	for(var i = 0; i < 1000; i = i + 10)
+	for(var i = 0; i < 100; i++)
 	{
-		this[i] = i + 10;
+		this[i] = (10 * i) + 10;
 	}
-}
+	return this;
+};
 
 var midTerm = function(first, last)
 {
 	return Math.floor((first + last)/2);
-}
+};
 
 Array.prototype.search = function(num)
 {
 	var result = {
 		count: 0,
-		index: "".
+		index: -1,
 		length: this.length
 	};
 
+	
 	var first = 0;
 	var last = this.length - 1;
 	var middle = midTerm(first,last);
-
-	this.sort();
 
 	while(this[middle] != num && first < last)
 	{
@@ -55,9 +58,7 @@ Array.prototype.search = function(num)
         }
         middle = midTerm(first,last);
     }
-   	if(this[middle] === num)
-   	{
-   		result.index = middle;
-   	}
+     //result.count++;
+   	result.index = (this[middle] === num) ? middle : -1;
    	return result;
-}
+};

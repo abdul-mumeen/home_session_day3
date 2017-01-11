@@ -1,6 +1,6 @@
 'use strict';
 
-
+module.exports = Array;
 Array.prototype.toTwenty = function()
 {
 	for(var i = 0; i < 20; i++)
@@ -45,20 +45,31 @@ Array.prototype.search = function(num)
 	var first = 0;
 	var last = this.length - 1;
 	var middle = midTerm(first,last);
-
-	while(this[middle] != num && first < last)
+	if (num === this[first])
 	{
-		result.count++;
-        if (num < this[middle])
-        {
-            last = middle - 1;
-        } else if (num > this[middle])
-        {
-            first = middle + 1;
-        }
-        middle = midTerm(first,last);
-    }
-     //result.count++;
+		middle = first;
+	}
+	else if (num === this[last])
+	{
+		middle = last;
+	}
+	else
+	{
+		while(this[middle] != num && first < last)
+		{
+			result.count++;
+	        if (num < this[middle])
+	        {
+	            last = middle - 1;
+	        } 
+	        else
+	        {
+	            first = middle + 1;
+	        }
+	        middle = midTerm(first,last);
+	    }
+	}
+	
    	result.index = (this[middle] === num) ? middle : -1;
    	return result;
 };
